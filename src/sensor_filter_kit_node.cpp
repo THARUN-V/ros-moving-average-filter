@@ -36,9 +36,9 @@ class SensorFilterNode : public rclcpp::Node
 
         SensorFilterNode(std::string NodeName) : Node(NodeName)
         {
-            this->declare_parameter("/imu_raw_topic","/imu0");
+            this->declare_parameter("/imu_raw_topic","/imu/data");
             this->declare_parameter("/imu_filtered_topic","/imu/filtered");
-            this->declare_parameter("/window_size",10);
+            this->declare_parameter("/window_size",100);
 
             this->get_parameter("/imu_raw_topic",IMU_RAW_TOPIC);
             this->get_parameter("/imu_filtered_topic",IMU_FILTERED_TOPIC);
