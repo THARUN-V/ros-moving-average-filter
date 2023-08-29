@@ -27,12 +27,19 @@ add_library(
 )
 
 add_executable(${PROJECT_NAME}_node src/sensor_filter_kit_node.cpp)
+add_executable(${PROJECT_NAME}_node_oop src/sensor_filter_kit_node_oop.cpp)
 
 add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(${PROJECT_NAME}_node_oop ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 # add_dependencies(${PROJECT_NAME}_node_testing ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(${PROJECT_NAME}_node
+  sensor_filter_kit_lib
+  ${catkin_LIBRARIES}
+  )
+
+target_link_libraries(${PROJECT_NAME}_node_oop
   sensor_filter_kit_lib
   ${catkin_LIBRARIES}
   )
