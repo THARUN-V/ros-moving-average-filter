@@ -9,7 +9,7 @@ add_compile_options(-std=c++11)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
-  gy_88_interface
+  sensor_msgs
   std_msgs
   message_generation
   )
@@ -106,7 +106,7 @@ generate_messages(
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES sensor_filter_kit_lib
-  CATKIN_DEPENDS roscpp std_msgs message_runtime
+  CATKIN_DEPENDS roscpp std_msgs message_runtime sensor_msgs
   #  DEPENDS system_lib
 )
 
@@ -135,7 +135,7 @@ add_library(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(${PROJECT_NAME}_node src/sensor_filter_kit_node.cpp)
-add_executable(${PROJECT_NAME}_node_testing src/sensor_filter_kit_node_testing.cpp)
+# add_executable(${PROJECT_NAME}_node_testing src/sensor_filter_kit_node_testing.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -146,20 +146,20 @@ add_executable(${PROJECT_NAME}_node_testing src/sensor_filter_kit_node_testing.c
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(${PROJECT_NAME}_node_testing ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(${PROJECT_NAME}_node_testing ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(${PROJECT_NAME}_node
   sensor_filter_kit_lib
-  gy_88_lib
+  # gy_88_lib
   ${catkin_LIBRARIES}
   )
 
-target_link_libraries(${PROJECT_NAME}_node_testing
-  sensor_filter_kit_lib
-  gy_88_lib
-  ${catkin_LIBRARIES}
-  )
+# target_link_libraries(${PROJECT_NAME}_node_testing
+#   sensor_filter_kit_lib
+#   gy_88_lib
+#   ${catkin_LIBRARIES}
+#   )
 
 #############
 ## Install ##
