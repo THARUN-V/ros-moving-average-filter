@@ -1,6 +1,5 @@
 #include "sensor_filter_kit/sensor_filter_kit_lib.h"
 #include "sensor_msgs/Imu.h"
-#include "sensor_filter_kit/SensorKitData.h"
 #include "ros/ros.h"
 #include "iostream"
 
@@ -35,23 +34,6 @@ void imu_data_callback(const sensor_msgs::Imu::ConstPtr& imu_msg)
 
 int main(int argc, char **argv)
 {
-  // int publishing_freq= 0;
-  // if(argc < 2)
-  // {
-  //   ROS_ERROR("Missing param! Try: <publishing_freq>.");
-  //   return 0;
-  // }
-  // if(atoi(argv[1]) != 0)
-  // {
-  //   publishing_freq = atoi(argv[1]);
-  //   ROS_INFO_STREAM("Publishing freq. set to: " << publishing_freq);
-  // }
-  // else
-  // {
-  //   ROS_ERROR("You must pass a recording freq. above 0, quitting.");
-  //   return 0;
-  // }
-
   const uint window_size = 5;
   const uint SENSOR_NUMBER = 6;
   uint sensors[SENSOR_NUMBER] = {ACCEL_X, ACCEL_Y, ACCEL_Z, GYRO_X, GYRO_Y, GYRO_Z};
@@ -102,6 +84,5 @@ int main(int argc, char **argv)
     
     publisher.publish(imu_filtered);
     ros::spinOnce();
-    // loop_rate.sleep();
   }
 }
