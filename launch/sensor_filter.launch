@@ -1,0 +1,7 @@
+<launch>
+    <node name="sensor_filter" pkg="sensor_filter_kit" type="sensor_filter_kit_node_oop" output="screen">
+    </node>
+    <param name="/imu_raw_topic" type="string" value="/imu0"/>
+    <param name="/imu_filtered_topic" type="string" value="/imu/filtered"/>
+    <param name="window_size" type="int" value="5"/>
+</launch>

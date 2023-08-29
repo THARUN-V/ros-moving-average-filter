@@ -78,8 +78,8 @@ class SensorFilterNode
             imu_filtered.linear_acceleration.y = features.at(1);
             imu_filtered.linear_acceleration.z = features.at(2);
             imu_filtered.angular_velocity.x = features.at(3);
-            imu_filtered.angular_velocity.x = features.at(4);
-            imu_filtered.angular_velocity.x = features.at(5);
+            imu_filtered.angular_velocity.y = features.at(4);
+            imu_filtered.angular_velocity.z = features.at(5);
 
             imu_filtered.header.stamp = ros::Time::now();
             imu_filtered.header.frame_id = "imu_filtered";
